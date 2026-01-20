@@ -18,4 +18,5 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	position.x = clamp(position.x, 25.0, 615.0)
 func start(pos):
+	position = pos
 	show()
