@@ -42,8 +42,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(25, 17)
 
-[node name="Player" type="CharacterBody2D"]
-position = Vector2(2, -4)
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_onrkg")
 metadata/_edit_group_ = true
