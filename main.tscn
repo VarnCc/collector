@@ -1,3 +1,106 @@
-[gd_scene format=3 uid="uid://bxtor230t6e10"]
+[gd_scene load_steps=6 format=3 uid="uid://bxtor230t6e10"]
+
+[ext_resource type="Texture2D" uid="uid://pc6wdemwyi5p" path="res://assets/sprietes/ground.png" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://b7c81kf5ikg6" path="res://player.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://4k7kqb3vt7v2" path="res://items.tscn" id="3_lquwl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7dm0k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dm0k"]
+size = Vector2(640, 31.5)
 
 [node name="main" type="Node"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["ground"]]
+physics_material_override = SubResource("PhysicsMaterial_7dm0k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(320, 343.75)
+shape = SubResource("RectangleShape2D_7dm0k")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(16, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(48, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(80, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D4" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(112, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D5" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(144, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D6" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(176, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D7" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(208, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D8" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(240, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D9" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(272, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D10" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(304, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D11" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(336, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D12" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(368, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D13" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(400, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D14" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(432, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D15" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(464, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D16" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(496, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D17" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(528, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D18" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(560, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D19" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(592, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Sprite2D20" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(624, 344)
+texture = ExtResource("1_h2yge")
+
+[node name="Player" parent="." instance=ExtResource("2_1bvp3")]
+position = Vector2(197, 313)
+
+[node name="Items" parent="." instance=ExtResource("3_lquwl")]
+position = Vector2(67, 68)
