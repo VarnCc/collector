@@ -1,7 +1,7 @@
 extends CharacterBody2D
 signal hit
 
-const SPEED = 300.0
+const SPEED = 400.0
 
 func _physics_process(delta: float) -> void:
 

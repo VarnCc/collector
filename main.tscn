@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxtor230t6e10"]
+[gd_scene load_steps=8 format=3 uid="uid://bxtor230t6e10"]
 
+[ext_resource type="Script" uid="uid://bkj7eqrednoq1" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://pc6wdemwyi5p" path="res://assets/sprietes/ground.png" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b7c81kf5ikg6" path="res://player.tscn" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://4k7kqb3vt7v2" path="res://items.tscn" id="3_lquwl"]
@@ -9,7 +10,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7dm0k"]
 size = Vector2(640, 31.5)
 
+[sub_resource type="Curve2D" id="Curve2D_lquwl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 640, 0)
+}
+point_count = 2
+
 [node name="main" type="Node"]
+script = ExtResource("1_1bvp3")
+item_scene = ExtResource("3_lquwl")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." groups=["ground"]]
 physics_material_override = SubResource("PhysicsMaterial_7dm0k")
@@ -102,5 +111,13 @@ texture = ExtResource("1_h2yge")
 [node name="Player" parent="." instance=ExtResource("2_1bvp3")]
 position = Vector2(197, 313)
 
-[node name="Items" parent="." instance=ExtResource("3_lquwl")]
-position = Vector2(67, 68)
+[node name="ItemPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_lquwl")
+
+[node name="ItemSpawnLocation" type="PathFollow2D" parent="ItemPath"]
+
+[node name="ItemTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="ItemTimer" to="." method="_on_item_timer_timeout"]
