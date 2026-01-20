@@ -45,3 +45,27 @@ func show_temporary_message():
 	$Message.show()
 	await get_tree().create_timer(2.0).timeout
 	$Message.hide()
+
+func update_lives(life: int) -> void:
+	var hearts = [
+		$Hearts/Heart1,
+		$Hearts/Heart2,
+		$Hearts/Heart3
+	]
+	for i in range(hearts.size()):
+		if i < life:
+			hearts[i].play("HeartFull")
+		else:
+			hearts[i].play("HeartsEmpty")
+			
+func animate_life_lost(life: int) -> void:
+	var hearts = [
+		$Hearts/Heart1,
+		$Hearts/Heart2,
+		$Hearts/Heart3
+	]
+	
+	if life >= 0 and life < hearts.size():
+		hearts[life].play("HeartToEmpty")
+		await hearts[life].animation_finished
+		hearts[life].play("HeartEmpty")

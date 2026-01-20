@@ -2,6 +2,7 @@ extends Node
 @export var item_scene: PackedScene
 var score = 0
 var life = 3
+var running := false
 
 func start_game():
 	score = 0
@@ -10,11 +11,14 @@ func start_game():
 	$Player.start($StartPosition.position)
 	
 func game_over():
+	running = false
 	$ItemTimer.stop()
+	get_tree().call_group("items", "queue_free")
 	$Player.set_physics_process(false)
 	$HUD.show_game_over()
 
 func new_game():
+	running = true
 	score = 0
 	life = 3
 	get_tree().call_group("items", "queue_free")
@@ -22,6 +26,7 @@ func new_game():
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	$Player.set_physics_process(true)
+	$HUD.update_lives(life)
 
 func _ready() -> void:
 	$ItemTimer.stop()
@@ -32,8 +37,10 @@ func _on_item_collected():
 	score += 1
 	$HUD.update_score(score)
 
-func _on_missed_item():
+func _on_missed_item() ->void:
 	life -= 1
+	$HUD.animate_life_lost(life)
+	$HUD.update_lives(life)
 	if life <= 0:
 		game_over()
 
@@ -43,6 +50,8 @@ func _process(delta: float) -> void:
 
 
 func _on_item_timer_timeout():
+	if not running:
+		return
 	var item = item_scene.instantiate()
 	item.add_to_group("items")
 	var item_spawn_location = $ItemPath/ItemSpawnLocation
