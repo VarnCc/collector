@@ -12,7 +12,7 @@ size = Vector2(640, 31.5)
 
 [sub_resource type="Curve2D" id="Curve2D_lquwl"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 640, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 632, 0)
 }
 point_count = 2
 
@@ -115,6 +115,7 @@ position = Vector2(197, 313)
 curve = SubResource("Curve2D_lquwl")
 
 [node name="ItemSpawnLocation" type="PathFollow2D" parent="ItemPath"]
+position = Vector2(8, 0)
 
 [node name="ItemTimer" type="Timer" parent="."]
 wait_time = 1.5
