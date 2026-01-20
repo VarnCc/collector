@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgh183yp2hi7y"]
+
+[ext_resource type="FontFile" uid="uid://bwpw01hs740nk" path="res://assets/sprietes/fonts/BitcountSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf" id="1_37p78"]
+[ext_resource type="Script" uid="uid://bn2yk3l0c6ywe" path="res://hud.gd" id="1_64ctp"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_64ctp")
+
+[node name="Score" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -32.0
+offset_bottom = 7.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.23158088, 0.65951943, 0.99999994, 1)
+theme_override_fonts/font = ExtResource("1_37p78")
+theme_override_font_sizes/font_size = 31
+text = "123"

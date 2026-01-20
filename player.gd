@@ -5,7 +5,6 @@ const SPEED = 400.0
 
 func _physics_process(delta: float) -> void:
 
-
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
@@ -18,3 +17,5 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	position.x = clamp(position.x, 25.0, 615.0)
+func start(pos):
+	show()

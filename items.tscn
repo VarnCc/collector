@@ -45,6 +45,7 @@ animations = [{
 
 [node name="Items" type="RigidBody2D"]
 gravity_scale = 0.5
+linear_damp = 2.0
 script = ExtResource("1_aa2cp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -62,4 +63,5 @@ position = Vector2(0, -28)
 position = Vector2(0, 28)
 shape = SubResource("CircleShape2D_aa2cp")
 
+[connection signal="item_collected" from="." to="." method="_on_item_collected"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
