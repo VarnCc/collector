@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bt5ki64fi2bdc"]
+
+[ext_resource type="Script" uid="uid://0n4amg0ef2y0" path="res://hearts.gd" id="1_3ffj4"]
+[ext_resource type="Texture2D" uid="uid://wnh1sgnnkvgq" path="res://assets/sprietes/items/life.png" id="1_qbydv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ffj4"]
+atlas = ExtResource("1_qbydv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhvj2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ffj4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_67sc3"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f3gic"]
+radius = 6.0
+
+[node name="hearts" type="RigidBody2D"]
+mass = 0.5
+gravity_scale = 0.25
+script = ExtResource("1_3ffj4")
+metadata/_edit_group_ = true
+
+[node name="heart" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bhvj2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_67sc3")
+
+[node name="Area2D" type="Area2D" parent="." groups=["hearts"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_f3gic")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

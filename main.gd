@@ -3,6 +3,7 @@ extends Node
 const MAX_LIFE = 3
 
 @export var item_scene: PackedScene
+@export var hearts_scene: PackedScene
 
 var score = 0
 var life: int = MAX_LIFE
@@ -11,6 +12,7 @@ var running := false
 func _ready() -> void:
 	$ItemTimer.stop()
 	$StartTimer.stop()
+	$HeartsTimer.stop()
 	$Player.set_physics_process(false)
 	$HUD.show_start_screen()
 
@@ -36,6 +38,7 @@ func game_over():
 	running = false
 	$ItemTimer.stop()
 	$StartTimer.stop()
+	$HeartsTimer.stop()
 	
 	get_tree().call_group("items", "queue_free")
 	
@@ -54,6 +57,11 @@ func _on_missed_item() ->void:
 	
 	if life <= 0:
 		game_over()
+		
+func _on_hearts_collected() -> void:
+	if life > 0 and life < MAX_LIFE:
+		life += 1
+		$HUD.update_lives(life)
 
 func _on_item_timer_timeout():
 	if not running:
@@ -73,3 +81,23 @@ func _on_item_timer_timeout():
 
 func _on_start_timer_timeout():
 	$ItemTimer.start()
+	$HeartsTimer.wait_time = randf_range(8.0, 20.0)
+	$HeartsTimer.start()
+
+func _on_hearts_timer_timeout():
+	if not running:
+		return
+		
+	var hearts = hearts_scene.instantiate()
+	hearts.add_to_group("hearts")
+	
+	var hearts_spawn_location = $ItemPath/ItemSpawnLocation
+	hearts_spawn_location.progress_ratio = randf()
+	hearts.position = hearts_spawn_location.position
+	
+	hearts.hearts_collected.connect(_on_hearts_collected)
+	
+	$HeartsTimer.wait_time = randf_range(8.0, 20.0)
+	$HeartsTimer.start()
+	
+	add_child(hearts)

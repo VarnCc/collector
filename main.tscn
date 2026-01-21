@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxtor230t6e10"]
+[gd_scene load_steps=12 format=3 uid="uid://bxtor230t6e10"]
 
 [ext_resource type="Script" uid="uid://bkj7eqrednoq1" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://pc6wdemwyi5p" path="res://assets/sprietes/ground.png" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b7c81kf5ikg6" path="res://player.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bt5ki64fi2bdc" path="res://hearts.tscn" id="3_5vw27"]
 [ext_resource type="PackedScene" uid="uid://4k7kqb3vt7v2" path="res://items.tscn" id="3_lquwl"]
 [ext_resource type="Texture2D" uid="uid://beo8lhgflq11n" path="res://assets/sprietes/ground2.png" id="4_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bgh183yp2hi7y" path="res://hud.tscn" id="5_lquwl"]
@@ -22,6 +23,7 @@ point_count = 2
 [node name="main" type="Node"]
 script = ExtResource("1_1bvp3")
 item_scene = ExtResource("3_lquwl")
+hearts_scene = ExtResource("3_5vw27")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." groups=["ground"]]
 physics_material_override = SubResource("PhysicsMaterial_7dm0k")
@@ -233,12 +235,15 @@ position = Vector2(320, 304)
 wait_time = 2.0
 one_shot = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 z_index = -7
 position = Vector2(320, 181.5)
 scale = Vector2(1, 1.0416666)
 texture = ExtResource("7_272bh")
 
+[node name="HeartsTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="ItemTimer" to="." method="_on_item_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="HeartsTimer" to="." method="_on_hearts_timer_timeout"]
