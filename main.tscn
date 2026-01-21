@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxtor230t6e10"]
+[gd_scene load_steps=11 format=3 uid="uid://bxtor230t6e10"]
 
 [ext_resource type="Script" uid="uid://bkj7eqrednoq1" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://pc6wdemwyi5p" path="res://assets/sprietes/ground.png" id="1_h2yge"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://4k7kqb3vt7v2" path="res://items.tscn" id="3_lquwl"]
 [ext_resource type="Texture2D" uid="uid://beo8lhgflq11n" path="res://assets/sprietes/ground2.png" id="4_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bgh183yp2hi7y" path="res://hud.tscn" id="5_lquwl"]
+[ext_resource type="Texture2D" uid="uid://bb6a35l44kqs1" path="res://assets/sprietes/backrground.png" id="7_272bh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7dm0k"]
 
@@ -231,6 +232,12 @@ position = Vector2(320, 304)
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -7
+position = Vector2(320, 181.5)
+scale = Vector2(1, 1.0416666)
+texture = ExtResource("7_272bh")
 
 [connection signal="timeout" from="ItemTimer" to="." method="_on_item_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
