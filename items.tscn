@@ -47,7 +47,7 @@ animations = [{
 collision_layer = 4
 collision_mask = 3
 gravity_scale = 0.5
-linear_damp = 2.0
+linear_damp = 2.15
 script = ExtResource("1_aa2cp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
