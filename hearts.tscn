@@ -25,6 +25,8 @@ radius = 6.0
 radius = 6.0
 
 [node name="hearts" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 3
 mass = 0.5
 gravity_scale = 0.25
 script = ExtResource("1_3ffj4")
@@ -37,6 +39,7 @@ sprite_frames = SubResource("SpriteFrames_bhvj2")
 shape = SubResource("CircleShape2D_67sc3")
 
 [node name="Area2D" type="Area2D" parent="." groups=["hearts"]]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_f3gic")

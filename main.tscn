@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://bxtor230t6e10"]
 
 [ext_resource type="Script" uid="uid://bkj7eqrednoq1" path="res://main.gd" id="1_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://pc6wdemwyi5p" path="res://assets/sprietes/ground.png" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://pc6wdemwyi5p" path="res://assets/sprietes/ground+background/ground.png" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b7c81kf5ikg6" path="res://player.tscn" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bt5ki64fi2bdc" path="res://hearts.tscn" id="3_5vw27"]
 [ext_resource type="PackedScene" uid="uid://4k7kqb3vt7v2" path="res://items.tscn" id="3_lquwl"]
-[ext_resource type="Texture2D" uid="uid://beo8lhgflq11n" path="res://assets/sprietes/ground2.png" id="4_7mycd"]
+[ext_resource type="Texture2D" uid="uid://beo8lhgflq11n" path="res://assets/sprietes/ground+background/ground2.png" id="4_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bgh183yp2hi7y" path="res://hud.tscn" id="5_lquwl"]
-[ext_resource type="Texture2D" uid="uid://bb6a35l44kqs1" path="res://assets/sprietes/backrground.png" id="7_272bh"]
+[ext_resource type="Texture2D" uid="uid://bb6a35l44kqs1" path="res://assets/sprietes/ground+background/backrground.png" id="7_272bh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7dm0k"]
 
@@ -25,190 +25,192 @@ script = ExtResource("1_1bvp3")
 item_scene = ExtResource("3_lquwl")
 hearts_scene = ExtResource("3_5vw27")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["ground"]]
+[node name="Ground" type="StaticBody2D" parent="." groups=["ground"]]
+collision_layer = 2
+collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_7dm0k")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(320, 328)
 shape = SubResource("RectangleShape2D_7dm0k")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
 position = Vector2(16, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D2" type="Sprite2D" parent="Ground"]
 position = Vector2(48, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D3" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D3" type="Sprite2D" parent="Ground"]
 position = Vector2(80, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D4" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D4" type="Sprite2D" parent="Ground"]
 position = Vector2(112, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D5" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D5" type="Sprite2D" parent="Ground"]
 position = Vector2(144, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D6" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D6" type="Sprite2D" parent="Ground"]
 position = Vector2(176, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D7" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D7" type="Sprite2D" parent="Ground"]
 position = Vector2(208, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D8" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D8" type="Sprite2D" parent="Ground"]
 position = Vector2(240, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D9" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D9" type="Sprite2D" parent="Ground"]
 position = Vector2(272, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D10" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D10" type="Sprite2D" parent="Ground"]
 position = Vector2(304, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D11" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D11" type="Sprite2D" parent="Ground"]
 position = Vector2(336, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D12" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D12" type="Sprite2D" parent="Ground"]
 position = Vector2(368, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D13" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D13" type="Sprite2D" parent="Ground"]
 position = Vector2(400, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D14" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D14" type="Sprite2D" parent="Ground"]
 position = Vector2(432, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D15" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D15" type="Sprite2D" parent="Ground"]
 position = Vector2(464, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D16" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D16" type="Sprite2D" parent="Ground"]
 position = Vector2(496, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D17" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D17" type="Sprite2D" parent="Ground"]
 position = Vector2(528, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D18" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D18" type="Sprite2D" parent="Ground"]
 position = Vector2(560, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D19" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D19" type="Sprite2D" parent="Ground"]
 position = Vector2(592, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D20" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D20" type="Sprite2D" parent="Ground"]
 position = Vector2(624, 328)
 texture = ExtResource("1_h2yge")
 
-[node name="Sprite2D21" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D21" type="Sprite2D" parent="Ground"]
 position = Vector2(624, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D22" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D22" type="Sprite2D" parent="Ground"]
 position = Vector2(592, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D23" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D23" type="Sprite2D" parent="Ground"]
 position = Vector2(560, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D24" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D24" type="Sprite2D" parent="Ground"]
 position = Vector2(528, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D25" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D25" type="Sprite2D" parent="Ground"]
 position = Vector2(496, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D26" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D26" type="Sprite2D" parent="Ground"]
 position = Vector2(464, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D27" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D27" type="Sprite2D" parent="Ground"]
 position = Vector2(432, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D28" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D28" type="Sprite2D" parent="Ground"]
 position = Vector2(400, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D29" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D29" type="Sprite2D" parent="Ground"]
 position = Vector2(368, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D30" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D30" type="Sprite2D" parent="Ground"]
 position = Vector2(336, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D31" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D31" type="Sprite2D" parent="Ground"]
 position = Vector2(304, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D32" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D32" type="Sprite2D" parent="Ground"]
 position = Vector2(272, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D33" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D33" type="Sprite2D" parent="Ground"]
 position = Vector2(240, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D34" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D34" type="Sprite2D" parent="Ground"]
 position = Vector2(208, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D35" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D35" type="Sprite2D" parent="Ground"]
 position = Vector2(176, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D36" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D36" type="Sprite2D" parent="Ground"]
 position = Vector2(144, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D37" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D37" type="Sprite2D" parent="Ground"]
 position = Vector2(112, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D38" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D38" type="Sprite2D" parent="Ground"]
 position = Vector2(80, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D39" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D39" type="Sprite2D" parent="Ground"]
 position = Vector2(48, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")
 
-[node name="Sprite2D40" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D40" type="Sprite2D" parent="Ground"]
 position = Vector2(16, 360)
 rotation = -3.1415927
 texture = ExtResource("4_7mycd")

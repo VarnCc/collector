@@ -25,6 +25,7 @@ func new_game():
 	life = MAX_LIFE
 	
 	get_tree().call_group("items", "queue_free")
+	get_tree().call_group("hearts", "queue_free")
 	
 	$HUD.update_score(score)
 	$HUD.update_lives(life)
@@ -41,6 +42,7 @@ func game_over():
 	$HeartsTimer.stop()
 	
 	get_tree().call_group("items", "queue_free")
+	get_tree().call_group("hearts", "queue_free")
 	
 	$Player.set_physics_process(false)
 	$HUD.show_game_over()

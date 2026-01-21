@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wo1nkokxlwq0"
-path="res://.godot/imported/start_button.png-efe3b2156c137ddf955ba3e8d1d4d606.ctex"
+uid="uid://beo8lhgflq11n"
+path="res://.godot/imported/ground2.png-47af10594cf718e99592aa2532c6d409.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprietes/start_button.png"
-dest_files=["res://.godot/imported/start_button.png-efe3b2156c137ddf955ba3e8d1d4d606.ctex"]
+source_file="res://assets/sprietes/ground+background/ground2.png"
+dest_files=["res://.godot/imported/ground2.png-47af10594cf718e99592aa2532c6d409.ctex"]
 
 [params]
 
