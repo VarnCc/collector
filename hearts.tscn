@@ -19,20 +19,22 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_67sc3"]
-radius = 6.0
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f3gic"]
-radius = 6.0
+radius = 8.0
 
 [node name="hearts" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 3
-mass = 0.5
-gravity_scale = 0.25
+gravity_scale = 0.2
+linear_damp = 3.0
 script = ExtResource("1_3ffj4")
 metadata/_edit_group_ = true
 
 [node name="heart" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_bhvj2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
