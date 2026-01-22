@@ -15,6 +15,8 @@ func _ready() -> void:
 	$HeartsTimer.stop()
 	$Player.set_physics_process(false)
 	$HUD.show_start_screen()
+	
+	$Backgroundmusic.stop()
 
 func _on_hud_start_game():
 	new_game()
@@ -34,12 +36,20 @@ func new_game():
 	$Player.set_physics_process(true)
 	
 	$StartTimer.start()
+	
+	$Backgroundmusic.play()
 
 func game_over():
 	running = false
 	$ItemTimer.stop()
 	$StartTimer.stop()
 	$HeartsTimer.stop()
+	
+	$HeartCollect.stop()
+	$Player.stop_sounds()
+	$HeartLose.stop()
+	$Backgroundmusic.stop()
+	$DeathSound.play()
 	
 	get_tree().call_group("items", "queue_free")
 	get_tree().call_group("hearts", "queue_free")
@@ -50,12 +60,17 @@ func game_over():
 func _on_item_collected():
 	score += 1
 	$HUD.update_score(score)
+	
+	$ItemCollect.play()
 
 func _on_missed_item() ->void:
 	life -= 1
 	
 	$HUD.animate_life_lost(life)
 	$HUD.update_lives(life)
+	
+	$HeartLose.stop()
+	$HeartLose.play()
 	
 	if life <= 0:
 		game_over()
@@ -64,6 +79,7 @@ func _on_hearts_collected() -> void:
 	if life > 0 and life < MAX_LIFE:
 		life += 1
 		$HUD.update_lives(life)
+		$HeartCollect.play()
 
 func _on_item_timer_timeout():
 	if not running:

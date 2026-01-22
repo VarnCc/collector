@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxtor230t6e10"]
+[gd_scene load_steps=17 format=3 uid="uid://bxtor230t6e10"]
 
 [ext_resource type="Script" uid="uid://bkj7eqrednoq1" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://pc6wdemwyi5p" path="res://assets/sprietes/ground+background/ground.png" id="1_h2yge"]
@@ -8,6 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://beo8lhgflq11n" path="res://assets/sprietes/ground+background/ground2.png" id="4_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bgh183yp2hi7y" path="res://hud.tscn" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://bb6a35l44kqs1" path="res://assets/sprietes/ground+background/backrground.png" id="7_272bh"]
+[ext_resource type="AudioStream" uid="uid://csveb2jgywe2m" path="res://Sounds/music/background_in_play.mp3" id="9_kek77"]
+[ext_resource type="AudioStream" uid="uid://bdsnaoeky6f4a" path="res://Sounds/sfx/game-over.mp3" id="10_4c57u"]
+[ext_resource type="AudioStream" uid="uid://bptl33j3fgwsl" path="res://Sounds/sfx/Item_collect.mp3" id="11_efxa6"]
+[ext_resource type="AudioStream" uid="uid://bucs4xgeua24m" path="res://Sounds/sfx/lose_life.wav" id="12_dg77c"]
+[ext_resource type="AudioStream" uid="uid://1wdnemksyu4x" path="res://Sounds/sfx/heart_collect.wav" id="12_ycdy4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7dm0k"]
 
@@ -244,6 +249,27 @@ scale = Vector2(1, 1.0416666)
 texture = ExtResource("7_272bh")
 
 [node name="HeartsTimer" type="Timer" parent="."]
+
+[node name="Backgroundmusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_kek77")
+volume_db = -20.0
+autoplay = true
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_4c57u")
+volume_db = -5.0
+
+[node name="ItemCollect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_efxa6")
+volume_db = -8.0
+
+[node name="HeartCollect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_ycdy4")
+volume_db = -5.0
+
+[node name="HeartLose" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_dg77c")
+volume_db = -10.0
 
 [connection signal="timeout" from="ItemTimer" to="." method="_on_item_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]

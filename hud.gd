@@ -30,6 +30,7 @@ func _on_start_button_pressed():
 	$Control/StartButton.hide()
 	show_temporary_message()
 	start_game.emit()
+	$Control/StartButtonSfx.play()
 
 func _on_message_timer_timeout():
 	$Message.hide()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bgh183yp2hi7y"]
+[gd_scene load_steps=13 format=3 uid="uid://bgh183yp2hi7y"]
 
 [ext_resource type="FontFile" uid="uid://bwpw01hs740nk" path="res://assets/sprietes/fonts/BitcountSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf" id="1_37p78"]
 [ext_resource type="Script" uid="uid://bn2yk3l0c6ywe" path="res://hud.gd" id="1_64ctp"]
 [ext_resource type="Texture2D" uid="uid://wo1nkokxlwq0" path="res://assets/sprietes/Buttons/start_button.png" id="3_8sq4i"]
 [ext_resource type="Texture2D" uid="uid://wnh1sgnnkvgq" path="res://assets/sprietes/items/life.png" id="4_640wx"]
+[ext_resource type="AudioStream" uid="uid://b7en0dmw6i6um" path="res://Sounds/sfx/start_button1.wav" id="4_a2258"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_640wx"]
 action = &"start_game"
@@ -128,6 +129,9 @@ grow_vertical = 2
 shortcut = SubResource("Shortcut_a2258")
 texture_normal = ExtResource("3_8sq4i")
 
+[node name="StartButtonSfx" type="AudioStreamPlayer2D" parent="Control"]
+stream = ExtResource("4_a2258")
+
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0
 
@@ -160,6 +164,8 @@ position = Vector2(40, 344)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_g10ll")
 animation = &"HeartToEmpty"
+frame = 11
+frame_progress = 1.0
 
 [node name="Heart3" type="AnimatedSprite2D" parent="Hearts"]
 texture_filter = 1
