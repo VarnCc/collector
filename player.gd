@@ -5,6 +5,7 @@ const SPEED = 400.0
 const BOOST_MULT := 1.6
 
 var boosted := false
+var last_boosted := false
 
 @onready var move_sfx: AudioStreamPlayer2D = $PlayerSound
 
@@ -13,6 +14,11 @@ func _physics_process(delta: float) -> void:
 	var current_speed := SPEED
 	if boosted:
 		current_speed *= BOOST_MULT
+		if boosted and not last_boosted:
+			$BoostUseing.stop()
+			$BoostUseing.play()
+		
+	last_boosted = boosted
 
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
@@ -43,3 +49,5 @@ func start(pos):
 func stop_sounds():
 	if move_sfx.playing:
 		move_sfx.stop()
+	if $BoostUseing.playing:
+		$BoostUseing.stop()

@@ -120,6 +120,7 @@ func _on_energy_collected() -> void:
 	if energy >= 0 and energy < MAX_ENERGY:
 		energy += 1.0
 		$HUD.update_boost(energy)
+		$BoostCollect.play()
 	if energy >= MAX_ENERGY:
 		$EnergyTimer.stop()
 		

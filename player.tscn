@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=4 uid="uid://b7c81kf5ikg6"]
+[gd_scene load_steps=11 format=4 uid="uid://b7c81kf5ikg6"]
 
 [ext_resource type="Texture2D" uid="uid://c1bfyl3eip76l" path="res://assets/sprietes/player/shoppingcartv1.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://c1jksbow22gsn" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="AudioStream" uid="uid://csxxq663qix37" path="res://Sounds/sfx/boost_using.wav" id="3_i3pqv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
 atlas = ExtResource("1_4flbx")
@@ -64,3 +65,7 @@ shape = SubResource("RectangleShape2D_onrkg")
 [node name="PlayerSound" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamWAV_onrkg")
 volume_db = -18.0
+
+[node name="BoostUseing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_i3pqv")
+volume_db = -8.0
