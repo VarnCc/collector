@@ -1,9 +1,9 @@
 extends CanvasLayer
 signal start_game
 
-func update_boost(energy):
-	$Energy.text = str(energy)
-	$Energy.show()
+
+func update_boost(energy: float):
+	$Boost/Boost.frame = int(energy)
 
 func update_score(score):
 	$Score.text = str(score)

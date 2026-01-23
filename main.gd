@@ -1,7 +1,7 @@
 extends Node
 
 const MAX_LIFE = 3
-const MAX_ENERGY = 10.0
+const MAX_ENERGY = 9.0
 const MIN_ENEGRY = 0.0
 const ENERGY_DRAIN_PER_SEC := 2.5
 
@@ -117,7 +117,7 @@ func _on_hearts_collected() -> void:
 		$HeartCollect.play()
 
 func _on_energy_collected() -> void:
-	if energy >= 0 and energy < 10:
+	if energy >= 0 and energy < MAX_ENERGY:
 		energy += 1.0
 		$HUD.update_boost(energy)
 	if energy >= MAX_ENERGY:

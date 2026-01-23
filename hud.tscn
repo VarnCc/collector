@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bgh183yp2hi7y"]
+[gd_scene load_steps=24 format=3 uid="uid://bgh183yp2hi7y"]
 
 [ext_resource type="FontFile" uid="uid://bwpw01hs740nk" path="res://assets/fronts/BitcountSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf" id="1_37p78"]
 [ext_resource type="Script" uid="uid://bn2yk3l0c6ywe" path="res://hud.gd" id="1_64ctp"]
 [ext_resource type="Texture2D" uid="uid://wo1nkokxlwq0" path="res://assets/sprietes/Buttons/start_button.png" id="3_8sq4i"]
 [ext_resource type="Texture2D" uid="uid://wnh1sgnnkvgq" path="res://assets/sprietes/items/life.png" id="4_640wx"]
 [ext_resource type="AudioStream" uid="uid://b7en0dmw6i6um" path="res://Sounds/sfx/start_button1.wav" id="4_a2258"]
+[ext_resource type="Texture2D" uid="uid://c6jkwk8kpx7ji" path="res://assets/sprietes/Energy_balken.png" id="6_1xsix"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_640wx"]
 action = &"start_game"
@@ -86,6 +87,77 @@ animations = [{
 "loop": false,
 "name": &"HeartToEmpty",
 "speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g10ll"]
+atlas = ExtResource("6_1xsix")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpiub"]
+atlas = ExtResource("6_1xsix")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amv7k"]
+atlas = ExtResource("6_1xsix")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fv7p"]
+atlas = ExtResource("6_1xsix")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u2vk"]
+atlas = ExtResource("6_1xsix")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q17s"]
+atlas = ExtResource("6_1xsix")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2d608"]
+atlas = ExtResource("6_1xsix")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w71nf"]
+atlas = ExtResource("6_1xsix")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_615i1"]
+atlas = ExtResource("6_1xsix")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pw7dr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g10ll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpiub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amv7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fv7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4u2vk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4q17s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2d608")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w71nf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_615i1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
 }]
 
 [node name="HUD" type="CanvasLayer"]
@@ -174,14 +246,17 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_g10ll")
 animation = &"HeartFull"
 
-[node name="Energy" type="Label" parent="."]
-offset_left = 304.0
-offset_top = 320.0
-offset_right = 360.0
-offset_bottom = 359.0
-theme_override_fonts/font = ExtResource("1_37p78")
-theme_override_font_sizes/font_size = 31
-text = "123"
+[node name="Boost" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Boost" type="AnimatedSprite2D" parent="Boost"]
+texture_filter = 1
+position = Vector2(320, 344)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_pw7dr")
 
 [connection signal="start_game" from="." to="." method="new_game"]
 [connection signal="pressed" from="Control/StartButton" to="." method="_on_start_button_pressed"]
