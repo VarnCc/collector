@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://couq8wj4eb55u"]
+
+[ext_resource type="Script" uid="uid://b3ofqnmiedb3q" path="res://energy.gd" id="1_if8s4"]
+[ext_resource type="Texture2D" uid="uid://xae8qhq665wp" path="res://assets/sprietes/Testsprite.png" id="2_xffyk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j41tm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xffyk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3mr6w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r5kus"]
+
+[node name="energy" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_if8s4")
+
+[node name="energy" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_j41tm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3mr6w")
+
+[node name="Area2D" type="Area2D" parent="." groups=["energy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_r5kus")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
