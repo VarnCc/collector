@@ -116,6 +116,7 @@ func _on_start_timer_timeout():
 	$ItemTimer.start()
 	$HeartsTimer.wait_time = randf_range(8.0, 20.0)
 	$HeartsTimer.start()
+	$EnergyTimer.wait_time = randf_range(5.0, 10.0)
 	$EnergyTimer.start()
 
 func _on_hearts_timer_timeout():
@@ -148,5 +149,7 @@ func _on_energy_timer_timeout():
 	energys.position = energys_spawn_location.position
 	
 	energys.energy_collected.connect(_on_energy_collected)
+	
+	$EnergyTimer.wait_time = randf_range(10.0, 20.0)
 	
 	add_child(energys)
