@@ -35,7 +35,7 @@ func show_start_screen():
 	$Control/StartButton.show()
 
 func show_temporary_message():
-	$Message.text = "<- A/D ->"
+	$Message.text = "<- A/D ->\nShift = Boost"
 	$Message.show()
 	await get_tree().create_timer(2.0).timeout
 	$Message.hide()
