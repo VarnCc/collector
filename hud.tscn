@@ -236,8 +236,7 @@ position = Vector2(40, 344)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_g10ll")
 animation = &"HeartToEmpty"
-frame = 11
-frame_progress = 1.0
+frame = 10
 
 [node name="Heart3" type="AnimatedSprite2D" parent="Hearts"]
 texture_filter = 1
@@ -257,6 +256,7 @@ texture_filter = 1
 position = Vector2(320, 344)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_pw7dr")
+frame = 5
 
 [connection signal="start_game" from="." to="." method="new_game"]
 [connection signal="pressed" from="Control/StartButton" to="." method="_on_start_button_pressed"]
