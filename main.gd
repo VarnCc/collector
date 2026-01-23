@@ -1,18 +1,23 @@
 extends Node
 
 const MAX_LIFE = 3
+const MAX_ENERGY = 10
+const MIN_ENEGRY = 0
 
 @export var item_scene: PackedScene
 @export var hearts_scene: PackedScene
+@export var energy_scene: PackedScene
 
 var score = 0
 var life: int = MAX_LIFE
+var energy: int = MIN_ENEGRY
 var running := false
 
 func _ready() -> void:
 	$ItemTimer.stop()
 	$StartTimer.stop()
 	$HeartsTimer.stop()
+	$EnergyTimer.stop()
 	$Player.set_physics_process(false)
 	$HUD.show_start_screen()
 	
@@ -25,6 +30,7 @@ func new_game():
 	running = true
 	score = 0
 	life = MAX_LIFE
+	energy = MIN_ENEGRY
 	
 	get_tree().call_group("items", "queue_free")
 	get_tree().call_group("hearts", "queue_free")
@@ -44,6 +50,7 @@ func game_over():
 	$ItemTimer.stop()
 	$StartTimer.stop()
 	$HeartsTimer.stop()
+	$EnergyTimer.stop()
 	
 	$HeartCollect.stop()
 	$Player.stop_sounds()
@@ -53,6 +60,7 @@ func game_over():
 	
 	get_tree().call_group("items", "queue_free")
 	get_tree().call_group("hearts", "queue_free")
+	get_tree().call_group("energys", "queue_free")
 	
 	$Player.set_physics_process(false)
 	$HUD.show_game_over()
@@ -81,6 +89,13 @@ func _on_hearts_collected() -> void:
 		$HUD.update_lives(life)
 		$HeartCollect.play()
 
+func _on_energy_collected() -> void:
+	if energy >= 0 and energy < 10:
+		energy += 1
+		print("energy")
+	if energy >= 10:
+		$EnergyTimer.stop()
+
 func _on_item_timer_timeout():
 	if not running:
 		return
@@ -101,6 +116,7 @@ func _on_start_timer_timeout():
 	$ItemTimer.start()
 	$HeartsTimer.wait_time = randf_range(8.0, 20.0)
 	$HeartsTimer.start()
+	$EnergyTimer.start()
 
 func _on_hearts_timer_timeout():
 	if not running:
@@ -119,3 +135,18 @@ func _on_hearts_timer_timeout():
 	$HeartsTimer.start()
 	
 	add_child(hearts)
+
+func _on_energy_timer_timeout():
+	if not running:
+		return
+	
+	var energys = energy_scene.instantiate()
+	energys.add_to_group("energys")
+	
+	var energys_spawn_location = $ItemPath/ItemSpawnLocation
+	energys_spawn_location.progress_ratio = randf()
+	energys.position = energys_spawn_location.position
+	
+	energys.energy_collected.connect(_on_energy_collected)
+	
+	add_child(energys)

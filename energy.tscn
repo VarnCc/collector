@@ -15,8 +15,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mr6w"]
+radius = 22.022715
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r5kus"]
+radius = 22.022715
 
 [node name="energy" type="RigidBody2D"]
 collision_layer = 4
@@ -24,6 +26,7 @@ collision_mask = 3
 gravity_scale = 0.3
 linear_damp = 2.5
 script = ExtResource("1_if8s4")
+metadata/_edit_group_ = true
 
 [node name="energy" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_j41tm")
@@ -32,6 +35,8 @@ sprite_frames = SubResource("SpriteFrames_j41tm")
 shape = SubResource("CircleShape2D_3mr6w")
 
 [node name="Area2D" type="Area2D" parent="." groups=["energy"]]
+collision_layer = 8
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_r5kus")

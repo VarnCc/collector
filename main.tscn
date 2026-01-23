@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bxtor230t6e10"]
+[gd_scene load_steps=18 format=3 uid="uid://bxtor230t6e10"]
 
 [ext_resource type="Script" uid="uid://bkj7eqrednoq1" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://pc6wdemwyi5p" path="res://assets/sprietes/ground+background/ground.png" id="1_h2yge"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bt5ki64fi2bdc" path="res://hearts.tscn" id="3_5vw27"]
 [ext_resource type="PackedScene" uid="uid://4k7kqb3vt7v2" path="res://items.tscn" id="3_lquwl"]
 [ext_resource type="Texture2D" uid="uid://beo8lhgflq11n" path="res://assets/sprietes/ground+background/ground2.png" id="4_7mycd"]
+[ext_resource type="PackedScene" uid="uid://couq8wj4eb55u" path="res://energy.tscn" id="4_w48qg"]
 [ext_resource type="PackedScene" uid="uid://bgh183yp2hi7y" path="res://hud.tscn" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://bb6a35l44kqs1" path="res://assets/sprietes/ground+background/backrground.png" id="7_272bh"]
 [ext_resource type="AudioStream" uid="uid://csveb2jgywe2m" path="res://Sounds/music/background_in_play.mp3" id="9_kek77"]
@@ -29,6 +30,7 @@ point_count = 2
 script = ExtResource("1_1bvp3")
 item_scene = ExtResource("3_lquwl")
 hearts_scene = ExtResource("3_5vw27")
+energy_scene = ExtResource("4_w48qg")
 
 [node name="Ground" type="StaticBody2D" parent="." groups=["ground"]]
 collision_layer = 2
@@ -271,7 +273,10 @@ volume_db = -5.0
 stream = ExtResource("12_dg77c")
 volume_db = -10.0
 
+[node name="EnergyTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="ItemTimer" to="." method="_on_item_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="HeartsTimer" to="." method="_on_hearts_timer_timeout"]
+[connection signal="timeout" from="EnergyTimer" to="." method="_on_energy_timer_timeout"]
