@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 		
 		if was_full and energy < MAX_ENERGY:
 			$EnergyTimer.wait_time = randf_range(10.0, 20.0)
-		#HUD
+		$HUD.update_boost(energy)
 		
 		#wenn energy leer wird
 		if energy <= 0.0:
@@ -63,6 +63,7 @@ func new_game():
 	
 	$HUD.update_score(score)
 	$HUD.update_lives(life)
+	$HUD.update_boost(energy)
 	
 	$Player.start($StartPosition.position)
 	$Player.set_physics_process(true)
@@ -118,7 +119,7 @@ func _on_hearts_collected() -> void:
 func _on_energy_collected() -> void:
 	if energy >= 0 and energy < 10:
 		energy += 1.0
-		print("energy")
+		$HUD.update_boost(energy)
 	if energy >= MAX_ENERGY:
 		$EnergyTimer.stop()
 		

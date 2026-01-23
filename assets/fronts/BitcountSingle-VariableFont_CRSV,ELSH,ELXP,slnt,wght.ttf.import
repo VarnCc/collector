@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bwpw01hs740nk"
-path="res://.godot/imported/BitcountSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf-53d88e0137125dbbad4030ac47b36a93.fontdata"
+path="res://.godot/imported/BitcountSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf-dd7541869454d126b6f101e1f6fbf61f.fontdata"
 
 [deps]
 
-source_file="res://assets/sprietes/fonts/BitcountSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf"
-dest_files=["res://.godot/imported/BitcountSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf-53d88e0137125dbbad4030ac47b36a93.fontdata"]
+source_file="res://assets/fronts/BitcountSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf"
+dest_files=["res://.godot/imported/BitcountSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf-dd7541869454d126b6f101e1f6fbf61f.fontdata"]
 
 [params]
 

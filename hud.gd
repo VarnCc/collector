@@ -1,6 +1,10 @@
 extends CanvasLayer
 signal start_game
 
+func update_boost(energy):
+	$Energy.text = str(energy)
+	$Energy.show()
+
 func update_score(score):
 	$Score.text = str(score)
 	$Score.show()
@@ -14,17 +18,6 @@ func show_game_over():
 	show_message("Game over")
 	await $MessageTimer.timeout
 	$Control/StartButton.show()
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func _on_start_button_pressed():
 	$Control/StartButton.hide()
