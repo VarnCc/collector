@@ -1,8 +1,9 @@
 extends Node
 
 const MAX_LIFE = 3
-const MAX_ENERGY = 10
-const MIN_ENEGRY = 0
+const MAX_ENERGY = 10.0
+const MIN_ENEGRY = 0.0
+const ENERGY_DRAIN_PER_SEC := 2.5
 
 @export var item_scene: PackedScene
 @export var hearts_scene: PackedScene
@@ -10,7 +11,7 @@ const MIN_ENEGRY = 0
 
 var score = 0
 var life: int = MAX_LIFE
-var energy: int = MIN_ENEGRY
+var energy: float = MIN_ENEGRY
 var running := false
 
 func _ready() -> void:
@@ -22,7 +23,32 @@ func _ready() -> void:
 	$HUD.show_start_screen()
 	
 	$Backgroundmusic.stop()
-
+	
+func _process(delta: float) -> void:
+	if not running:
+		return
+	
+	var wants_boost := Input.is_action_pressed("move_energy")
+	
+	if wants_boost and energy > 0.0:
+		var was_full := energy >= MAX_ENERGY
+		#boost on
+		$Player.set_boosted(true)
+		
+		#use boost
+		energy = max(energy - ENERGY_DRAIN_PER_SEC * delta, 0.0)
+		
+		if was_full and energy < MAX_ENERGY:
+			$EnergyTimer.wait_time = randf_range(10.0, 20.0)
+		#HUD
+		
+		#wenn energy leer wird
+		if energy <= 0.0:
+			$Player.set_boosted(false)
+		
+	else:
+		$Player.set_boosted(false)
+		
 func _on_hud_start_game():
 	new_game()
 
@@ -30,7 +56,7 @@ func new_game():
 	running = true
 	score = 0
 	life = MAX_LIFE
-	energy = MIN_ENEGRY
+	energy = 5.0
 	
 	get_tree().call_group("items", "queue_free")
 	get_tree().call_group("hearts", "queue_free")
@@ -91,10 +117,12 @@ func _on_hearts_collected() -> void:
 
 func _on_energy_collected() -> void:
 	if energy >= 0 and energy < 10:
-		energy += 1
+		energy += 1.0
 		print("energy")
-	if energy >= 10:
+	if energy >= MAX_ENERGY:
 		$EnergyTimer.stop()
+		
+#func 
 
 func _on_item_timer_timeout():
 	if not running:
@@ -151,5 +179,6 @@ func _on_energy_timer_timeout():
 	energys.energy_collected.connect(_on_energy_collected)
 	
 	$EnergyTimer.wait_time = randf_range(10.0, 20.0)
+	$EnergyTimer.start()
 	
 	add_child(energys)

@@ -1,24 +1,26 @@
 [gd_scene load_steps=6 format=3 uid="uid://couq8wj4eb55u"]
 
 [ext_resource type="Script" uid="uid://b3ofqnmiedb3q" path="res://energy.gd" id="1_if8s4"]
-[ext_resource type="Texture2D" uid="uid://xae8qhq665wp" path="res://assets/sprietes/Testsprite.png" id="2_xffyk"]
+[ext_resource type="Texture2D" uid="uid://djxd2xpihwa06" path="res://assets/sprietes/items/Energy_item.png" id="2_if8s4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j41tm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_xffyk")
+"texture": ExtResource("2_if8s4")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3mr6w"]
-radius = 22.022715
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xffyk"]
+radius = 6.0
+height = 20.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_r5kus"]
-radius = 22.022715
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j41tm"]
+radius = 6.0
+height = 20.0
 
 [node name="energy" type="RigidBody2D"]
 collision_layer = 4
@@ -32,13 +34,14 @@ metadata/_edit_group_ = true
 sprite_frames = SubResource("SpriteFrames_j41tm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_3mr6w")
+shape = SubResource("CapsuleShape2D_xffyk")
 
 [node name="Area2D" type="Area2D" parent="." groups=["energy"]]
 collision_layer = 8
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_r5kus")
+shape = SubResource("CapsuleShape2D_j41tm")
+debug_color = Color(0.14637634, 0.52598983, 0.98029953, 0.41960785)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

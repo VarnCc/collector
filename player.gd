@@ -2,14 +2,21 @@ extends CharacterBody2D
 signal hit
 
 const SPEED = 400.0
+const BOOST_MULT := 1.6
+
+var boosted := false
 
 @onready var move_sfx: AudioStreamPlayer2D = $PlayerSound
 
 func _physics_process(delta: float) -> void:
+	
+	var current_speed := SPEED
+	if boosted:
+		current_speed *= BOOST_MULT
 
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction * current_speed
 		if direction > 0:
 			$AnimatedSprite2D.flip_h = true
 			if not move_sfx.playing:
@@ -26,6 +33,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	position.x = clamp(position.x, 25.0, 615.0)
 	
+func set_boosted(value: bool) ->void:
+	boosted = value
+
 func start(pos):
 	position = pos
 	show()
